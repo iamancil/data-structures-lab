@@ -2,10 +2,9 @@
 #include <stdlib.h>
 #include <time.h>
 
-void method1(float arr2[], int size){
-
+double method1(int size){
   int start_time = clock();
-
+  float *arr2 = malloc(size * sizeof(float));
   float sum = 0;
   float q = 0;
   float *arr1 = malloc(size * sizeof(float));
@@ -20,13 +19,14 @@ void method1(float arr2[], int size){
 
   int end_time = clock();
   double time_taken = ((double)(end_time - start_time))/CLOCKS_PER_SEC;
-  printf("%d, %f \n", size, time_taken);
+  free(arr1);
+  free(arr2);
+  return time_taken;
 }
 
-void method2(float arr2[], int size){
-  
+double method2(int size){
   int start_time = clock();
-
+  float *arr2 = malloc(size * sizeof(float));
   float q = 0;
   float *arr1 = malloc(size * sizeof(float));
   for(int i=0;i<size;i++){
@@ -41,15 +41,20 @@ void method2(float arr2[], int size){
     arr2[i] = q;
   }
   int end_time = clock();
+  free(arr1);
+  free(arr2);
   double time_taken = ((double)(end_time - start_time))/ CLOCKS_PER_SEC;
-  printf("%d, %f \n ", size, time_taken);
+  return time_taken;
 }
 
 int main(){
   srand(time(NULL));
-  int size = (rand() % 10000000);
-  float *finalArray = malloc(size * sizeof(float));
-  method1(finalArray,size);
-
+  int size = (rand() % 100);
+  
+  for (int n = 5000; n <= 50000; n += 1000) {
+        double time1 = method1(n);
+        double time2 = method2(n);
+        printf("%d,%f,%f\n", n, time1, time2);
+    } 
   return 0;
 }
