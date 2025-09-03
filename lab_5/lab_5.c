@@ -1,7 +1,12 @@
+//Evaluate a postfix algebraic expression with the help of stack.
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdbool.h>
+#include <string.h>
 #include <ctype.h>
 #define max_size 100
+
+//stack here is implemented  using arrays
 
 typedef struct {
 	int arr[max_size];
@@ -74,12 +79,15 @@ bool empty(Stack *stack){
 int main(){
   Stack stack;
   initialize(&stack);
-  char *expression = "6 3 * 6 +";
-  
-  for(int i=0;expression[i]!='\0';i++){
+  char *expression;
+  int size = 100;
+  expression = (char *)malloc(size * sizeof(char));
+  printf("Enter a postfix expression: ");
+  scanf("%99s", expression);
+  for(int i=0;expression[i]!=')';i++){
     int curr_char = expression[i];
-    if(isdigit(curr_char)){
-      push(&stack,curr_char-'0');
+    if (isdigit(curr_char)){
+      push(&stack, curr_char-'0');
     }
     else if(curr_char == '+' || curr_char == '-' || curr_char == '*' || curr_char == '/'){
       int n2 = pop(&stack);
@@ -104,5 +112,6 @@ int main(){
     }
   }
   printf("Result: %d\n", pop(&stack));
+  free(expression);
   return 0;
 }
