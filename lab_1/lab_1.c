@@ -1,3 +1,7 @@
+//Given an array X. Compute the array A such that A[i] is the average of elements X[0]. . . X[i], for i = 0....n − 1. You can solve
+//this with two methods, one with O(n2) and one with O(n) time complexities. Compare time complexities of both the methods
+//by experimental approach plotting graph between ‘n’ and time taken for execution.
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>

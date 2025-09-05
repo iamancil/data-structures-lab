@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+//this isn't my code
+
 typedef struct {
     char* student_name;
     int student_roll_number;

@@ -1,3 +1,6 @@
+//Write a program to sort an array (make a dynamic array) using Bubble sort. Use 1-bit variable FLAG to signal when no
+//interchange take place during pass. If FLAG is 0 after any pass, then list is already sorted and there is no need to continue.
+
 #include <stdio.h>
 #include <stdlib.h>
 
